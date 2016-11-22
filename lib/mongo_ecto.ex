@@ -588,7 +588,12 @@ defmodule Mongo.Ecto do
       {:value, value, field} ->
         preprocess.(field, Conversions.to_ecto_pk(value, pk), nil)
       field ->
+        # IO.puts "Use case 3"
+        # IO.inspect field
         preprocess.(field, document, nil)
+        # |> IO.inspect
+        # |> Enum.map(fn({key, value}) -> {String.to_atom(key), value} end)
+        # |> Enum.into(%{})
     end)
   end
 
